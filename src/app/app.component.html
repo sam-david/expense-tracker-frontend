@@ -1,11 +1,5 @@
-<div class="row">
-  <div class="col-sm-12">
-    <h1 class="page-title">My Expenses</h1>
-  </div>
-</div>
+<app-toolbar></app-toolbar>
 
-<ul class="expenses">
-  <li *ngFor="let expense of expenses">
-    {{ expense.amount }} {{ expense.description }}
-  </li>
-</ul>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

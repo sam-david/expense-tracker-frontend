@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injectable } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -37,7 +37,12 @@ import { ExpensesComponent } from './expenses/expenses.component';
     HttpModule,
     MaterializeModule
   ],
-  providers: [Angular2TokenService, AuthService, AuthGuard, ExpenseService],
+  providers: [
+    Angular2TokenService,
+    AuthService,
+    AuthGuard,
+    ExpenseService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

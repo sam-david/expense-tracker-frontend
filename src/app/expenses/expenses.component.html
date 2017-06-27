@@ -1,13 +1,41 @@
 <h1 class="title">My Expenses</h1>
 
-<ul class="expenses">
-  <li *ngFor="let expense of expenses">
-    {{ expense.amount }} {{ expense.description }}
-  </li>
-</ul>
+<div class="row">
+  <div class="col s4">
+    <label>Description: <input #newExpenseDescription /></label>
+  </div>
+  <div class="col s4">
+    <label>Amount: <input #newExpenseAmount /></label>
+  </div>
+  <div class="col s4">
+    <label>Date: <input #newExpenseTransactionDate type="date" class="datepicker"/></label>
+  </div>
+</div>
+<div class="row" style="text-align: center;">
+  <button class="btn" (click)="addHero(newExpenseDescription.value, newExpenseAmount.value, newExpenseTransactionDate.value); newExpenseDescription.value=''" type='submit'>Add Expense</button>
+  <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
+</div>
 
-<label>New hero name: <input #newHeroName /></label>
-<label>New hero name: <input #newHeroName /></label>
-<button (click)="addHero(newHeroName.value); newHeroName.value=''">Add Hero</button>
+<div class="row" *ngIf="expenses">
+  <div class="col s2">
+    <p class="expense-heading">Amount</p>
+  </div>
+  <div class="col s6">
+    <p class="expense-heading">Description</p>
+  </div>
+  <div class="col s4">
+    <p class="expense-heading">Transaction Date</p>
+  </div>
+</div>
 
-<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
+<div class="row" *ngFor="let expense of expenses">
+  <div class="col s2">
+    {{ expense.amount }}
+  </div>
+  <div class="col s6">
+    {{ expense.description }}
+  </div>
+  <div class="col s4">
+    {{ expense.transaction_date | date }}
+  </div>
+</div>

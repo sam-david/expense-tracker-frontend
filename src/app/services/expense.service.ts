@@ -1,6 +1,5 @@
-import { Injectable }              from '@angular/core';
-import { Http, Response, Headers, RequestOptions  }          from '@angular/http';
-
+import { Injectable } from '@angular/core';
+import { Http, Response, Headers, RequestOptions  } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -14,22 +13,37 @@ export class ExpenseService {
   constructor (private http: Http) {}
 
   getExpenses(): Observable<Expense[]> {
-    return this.http.get(this.expensesUrl)
-                    .map(this.extractData)
+    let accessToken = localStorage.getItem('accessToken');
+    let clientToken = localStorage.getItem('client');
+    let uid = localStorage.getItem('uid');
+
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'access-token': accessToken,
+      'client': clientToken,
+      'token-type': 'Bearer',
+      'uid': uid
+     });
+
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get('http://localhost:3000/expenses', options)
+                    .map(this.extractExpensesData)
                     .catch(this.handleError);
   }
+
   create(name: string): Observable<Expense> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(this.expensesUrl, { name }, options)
-                    .map(this.extractData)
+    return this.http.post(this.expensesUrl, { name })
+                    .map(this.extractExpensesData)
                     .catch(this.handleError);
   }
 
-  private extractData(res: Response) {
+  private extractExpensesData(res: Response) {
     let body = res.json();
-    return body.data || { };
+    console.log("EXPENSES: ", body.expenses)
+    return body.expenses || { };
   }
 
   private handleError (error: Response | any) {

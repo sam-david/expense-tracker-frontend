@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {ExpenseService} from "../services/expense.service";
-import {Expense} from "./expense.interface"
+import {Expense} from "./expense.interface";
+import $ from "jquery";
 
 @Component({
   selector: 'app-expenses',
@@ -9,15 +10,23 @@ import {Expense} from "./expense.interface"
   styleUrls: ['./expenses.component.css']
 })
 
+
 export class ExpensesComponent implements OnInit {
   errorMessage: string;
   expenses: Expense[];
   mode = 'Observable';
 
-  constructor(private expenseService: ExpenseService) { }
+  constructor(private expenseService: ExpenseService) {
+  }
 
   ngOnInit() {
-    this.getExpenses();
+    var that = this;
+    setTimeout(function() {
+
+      that.getExpenses()
+
+      console.log('EXPENSES:',that.expenses);
+    }, 4000)
   }
 
   getExpenses() {

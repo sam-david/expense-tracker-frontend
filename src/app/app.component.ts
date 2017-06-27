@@ -10,6 +10,7 @@ import { ExpenseComponent } from './components/expenses/expense.component';
 })
 
 
+
 export class AppComponent {
   title = 'Expense Tracker';
 

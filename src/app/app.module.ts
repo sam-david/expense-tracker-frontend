@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { Angular2TokenService } from 'angular2-token';
 import { MaterializeModule } from 'angular2-materialize';
 // Components
-import {
-  ExpenseComponent
-} from './components';
+// import {
+//   ExpenseComponent
+// } from './components';
+import {ExpenseService} from "./services/expense.service";
 import {AuthService} from "./services/auth.service";
 import {AuthGuard} from "./guards/auth.guard";
 import { HomeComponent } from './home/home.component';
@@ -22,7 +23,6 @@ import { ExpensesComponent } from './expenses/expenses.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ExpenseComponent,
     HomeComponent,
     ToolbarComponent,
     AuthDialogComponent,
@@ -37,7 +37,7 @@ import { ExpensesComponent } from './expenses/expenses.component';
     HttpModule,
     MaterializeModule
   ],
-  providers: [Angular2TokenService, AuthService, AuthGuard],
+  providers: [Angular2TokenService, AuthService, AuthGuard, ExpenseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

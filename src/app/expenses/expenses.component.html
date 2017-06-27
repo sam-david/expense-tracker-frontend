@@ -1,8 +1,13 @@
-<p>
-  expenses works!
-</p>
+<h1 class="title">My Expenses</h1>
+
 <ul class="expenses">
   <li *ngFor="let expense of expenses">
     {{ expense.amount }} {{ expense.description }}
   </li>
 </ul>
+
+<label>New hero name: <input #newHeroName /></label>
+<label>New hero name: <input #newHeroName /></label>
+<button (click)="addHero(newHeroName.value); newHeroName.value=''">Add Hero</button>
+
+<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>

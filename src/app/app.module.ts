@@ -11,13 +11,15 @@ import {
 } from './components';
 import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ExpenseComponent,
     HomeComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    AuthDialogComponent
   ],
   imports: [
     BrowserModule,

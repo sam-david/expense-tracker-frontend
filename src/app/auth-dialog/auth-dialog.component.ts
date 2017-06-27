@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, EventEmitter} from '@angular/core';
-// import {MaterializeAction} from "angular2-materialize";
+import {MaterializeAction} from "angular2-materialize";
 
 @Component({
   selector: 'app-auth-dialog',
@@ -9,7 +9,7 @@ import {Component, OnInit, Input, EventEmitter} from '@angular/core';
 export class AuthDialogComponent implements OnInit {
 
   @Input('auth-mode') authMode: 'login' | 'register' = 'login';
-  // modalActions = new EventEmitter<string|MaterializeAction>();
+  modalActions = new EventEmitter<string|MaterializeAction>();
 
   constructor() {
 
@@ -17,7 +17,7 @@ export class AuthDialogComponent implements OnInit {
 
   openDialog(mode: 'login' | 'register' = 'login'){
     this.authMode = mode;
-    // this.modalActions.emit({action:"modal", params:['open']});
+    this.modalActions.emit({action:"modal", params:['open']});
   }
 
   ngOnInit() {

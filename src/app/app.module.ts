@@ -10,11 +10,14 @@ import { MaterializeModule } from 'angular2-materialize';
 import {
   ExpenseComponent
 } from './components';
+import {AuthService} from "./services/auth.service";
+import {AuthGuard} from "./guards/auth.guard";
 import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { ExpensesComponent } from './expenses/expenses.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,8 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     ToolbarComponent,
     AuthDialogComponent,
     LoginFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    ExpensesComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     HttpModule,
     MaterializeModule
   ],
-  providers: [Angular2TokenService],
+  providers: [Angular2TokenService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

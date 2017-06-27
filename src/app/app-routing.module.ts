@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from "./home/home.component";
-
+import {ExpensesComponent} from "./expenses/expenses.component";
+import {AuthGuard} from "./guards/auth.guard";
 const routes: Routes = [
   {
     path: '',
@@ -11,6 +12,11 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'expenses',
+    component: ExpensesComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

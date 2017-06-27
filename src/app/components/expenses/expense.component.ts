@@ -1,9 +1,12 @@
-export class Expense {
+import { Component, Input, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'my-expense',
+  templateUrl: './expense.component.html'
+})
+
+export class ExpenseComponent {
   id: number;
   description: string;
   amount: number;
-  transactionDate: Date;
-
-  // template: `<h1>{{title}}</h1><h2>{{hero.name}} details!</h2>`
-  template: `<h1>{{title}}</h1><h2>{{hero.name}} details!</h2>`
 }

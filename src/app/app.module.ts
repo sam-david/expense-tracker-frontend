@@ -13,6 +13,8 @@ import {
 import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
     ExpenseComponent,
     HomeComponent,
     ToolbarComponent,
-    AuthDialogComponent
+    AuthDialogComponent,
+    LoginFormComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,

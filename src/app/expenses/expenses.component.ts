@@ -22,11 +22,8 @@ export class ExpensesComponent implements OnInit {
   ngOnInit() {
     var that = this;
     setTimeout(function() {
-
       that.getExpenses()
-
-      console.log('EXPENSES:',that.expenses);
-    }, 4000)
+    }, 3000)
   }
 
   getExpenses() {
@@ -36,9 +33,10 @@ export class ExpensesComponent implements OnInit {
                        error =>  this.errorMessage = <any>error);
   }
 
-  addExpense(name: string, amount: number) {
-    if (!name || !amount) { return; }
-    this.expenseService.create(name)
+  addExpense(description: string, amount: number, transactionDate: Date) {
+    console.log("Add expense")
+    if (!description || !amount || !transactionDate) { return; }
+    this.expenseService.create(description, amount, transactionDate)
                      .subscribe(
                        expense  => this.expenses.push(expense),
                        error =>  this.errorMessage = <any>error);

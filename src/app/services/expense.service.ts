@@ -31,12 +31,29 @@ export class ExpenseService {
                     .catch(this.handleError);
   }
 
-  create(name: string): Observable<Expense> {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
+  create(description: string, amount: number, transactionDate: Date): Observable<Expense> {
+    let accessToken = localStorage.getItem('accessToken');
+    let clientToken = localStorage.getItem('client');
+    let uid = localStorage.getItem('uid');
+
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'access-token': accessToken,
+      'client': clientToken,
+      'token-type': 'Bearer',
+      'uid': uid
+     });
+
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(this.expensesUrl, { name })
-                    .map(this.extractExpensesData)
+    let formData = {
+      description: description,
+      amount: amount,
+      transaction_date: transactionDate
+    }
+
+    return this.http.post('http://localhost:3000/expenses', formData, options)
+                    .map(res => res.json())
                     .catch(this.handleError);
   }
 

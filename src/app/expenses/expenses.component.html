@@ -12,7 +12,7 @@
   </div>
 </div>
 <div class="row" style="text-align: center;">
-  <button class="btn" (click)="addHero(newExpenseDescription.value, newExpenseAmount.value, newExpenseTransactionDate.value); newExpenseDescription.value=''" type='submit'>Add Expense</button>
+  <button class="btn" (click)="addExpense(newExpenseDescription.value, newExpenseAmount.value, newExpenseTransactionDate.value); newExpenseDescription.value=''" type='submit'>Add Expense</button>
   <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
 </div>
 

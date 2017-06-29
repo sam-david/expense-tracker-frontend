@@ -1,0 +1,19 @@
+<h1 class="title">My Report</h1>
+
+<div class="row heading-rows" *ngIf="reports">
+  <div class="col s6">
+    <p class="report-heading">Month</p>
+  </div>
+  <div class="col s6">
+    <p class="report-heading">Sum</p>
+  </div>
+</div>
+
+<div class="row report-rows" *ngFor="let report of reports">
+  <div class="col s6">
+    {{ report.date }}
+  </div>
+  <div class="col s6">
+    ${{ report.sum }}
+  </div>
+</div>

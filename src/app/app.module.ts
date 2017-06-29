@@ -11,6 +11,7 @@ import { MaterializeModule } from 'angular2-materialize';
 //   ExpenseComponent
 // } from './components';
 import {ExpenseService} from "./services/expense.service";
+import {ReportService} from "./services/report.service";
 import {AuthService} from "./services/auth.service";
 import {AuthGuard} from "./guards/auth.guard";
 import { HomeComponent } from './home/home.component';
@@ -19,6 +20,7 @@ import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { ExpensesComponent } from './expenses/expenses.component';
+import { ReportsComponent } from './reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { ExpensesComponent } from './expenses/expenses.component';
     AuthDialogComponent,
     LoginFormComponent,
     RegisterFormComponent,
-    ExpensesComponent
+    ExpensesComponent,
+    ReportsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { ExpensesComponent } from './expenses/expenses.component';
     Angular2TokenService,
     AuthService,
     AuthGuard,
-    ExpenseService
+    ExpenseService,
+    ReportService
   ],
   bootstrap: [AppComponent]
 })

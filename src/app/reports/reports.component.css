@@ -2,11 +2,10 @@
   text-align: center;
 }
 
-.error {
-  color: red;
+.heading-rows, .report-rows {
+  text-align: center;
 }
-
-.expense-heading {
+.report-heading {
   font-weight: bold;
   font-size: 1.5em;
 }

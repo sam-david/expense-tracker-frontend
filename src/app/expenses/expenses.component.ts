@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {ExpenseService} from "../services/expense.service";
 import {Expense} from "./expense.interface";
 import $ from "jquery";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-expenses',
@@ -16,14 +17,18 @@ export class ExpensesComponent implements OnInit {
   expenses: Expense[];
   mode = 'Observable';
 
-  constructor(private expenseService: ExpenseService) {
+  constructor(private expenseService: ExpenseService, private authService: AuthService) {
   }
 
   ngOnInit() {
-    var that = this;
-    setTimeout(function() {
-      that.getExpenses()
-    }, 3000)
+    if (this.authService.userSignedIn$) {
+      this.getExpenses()
+    } else {
+      var that = this;
+      setTimeout(function() {
+        that.getExpenses()
+      }, 2500)
+    }
   }
 
   getExpenses() {
@@ -34,8 +39,16 @@ export class ExpensesComponent implements OnInit {
   }
 
   addExpense(description: string, amount: number, transactionDate: Date) {
-    console.log("Add expense")
-    if (!description || !amount || !transactionDate) { return; }
+    this.errorMessage = null;
+    // validations
+    if (!$.isNumeric(amount)) {
+      this.errorMessage = "Amount is not numeric"
+      return;
+    }
+    if (!description || !amount || !transactionDate) {
+      this.errorMessage = "All fields must be complete"
+      return;
+    }
     this.expenseService.create(description, amount, transactionDate)
                      .subscribe(
                        expense  => this.expenses.push(expense),
